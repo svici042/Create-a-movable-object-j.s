@@ -1,3 +1,4 @@
+/* Bendrieji nustatymai ir numatytųjų naršyklės tarpų panaikinimas. */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,6 +6,7 @@
 }
 
 :root {
+  /* Spalvų kintamieji leidžia lengvai keisti viso puslapio temą. */
   --background: #070b14;
   --panel: rgba(15, 23, 42, 0.82);
   --panel-border: rgba(148, 163, 184, 0.18);
@@ -44,6 +46,7 @@ body {
 }
 
 body::before {
+  /* Fiksuotas subtilus tinklelis virš pagrindinio fono. */
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -55,6 +58,7 @@ body::before {
 }
 
 .animated-background {
+  /* Dekoratyvinis sluoksnis neužstoja paspaudimų interaktyvioje zonoje. */
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -148,6 +152,7 @@ body::before {
 }
 
 .app {
+  /* Turinys rodomas virš dekoratyvinio fono ir centruojamas puslapyje. */
   position: relative;
   z-index: 1;
   width: min(1180px, calc(100% - 32px));
@@ -262,6 +267,7 @@ h1 {
 }
 
 .playground {
+  /* Santykinė pozicija naudojama objektui ir kliūčiai išdėstyti. */
   position: relative;
   height: min(68vh, 620px);
   min-height: 440px;
@@ -323,6 +329,7 @@ h1 {
 }
 
 .movable-object {
+  /* left ir top reikšmes judėjimo metu keičia JavaScript. */
   position: absolute;
   z-index: 4;
   width: 76px;
@@ -373,6 +380,7 @@ h1 {
 }
 
 .obstacle {
+  /* Absoliučiai išdėstyta zona, su kuria tikrinami susidūrimai. */
   position: absolute;
   top: 40%;
   left: 48%;
@@ -422,6 +430,7 @@ h1 {
 }
 
 @keyframes pulse-ring {
+  /* Besiplečiantis žiedas sukuria švytinčio objekto pulsavimo efektą. */
   0% {
     opacity: 0.7;
     transform: scale(0.9);
@@ -457,6 +466,7 @@ h1 {
 }
 
 @keyframes obstacle-hit {
+  /* Trumpas kliūties sujudėjimas parodo, kad įvyko susidūrimas. */
   0%,
   100% {
     transform: translateX(0);
@@ -479,6 +489,7 @@ h1 {
 }
 
 @media (max-width: 760px) {
+  /* Išdėstymas pritaikomas telefonams ir siauresniems ekranams. */
   .app {
     width: calc(100% - 20px);
     padding: 20px 0;
@@ -518,6 +529,7 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Gerbiama naudotojo operacinėje sistemoje pasirinkta mažesnio judesio nuostata. */
   *,
   *::before,
   *::after {

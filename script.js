@@ -1,31 +1,31 @@
-// Selects the playground element.
+// Randama interaktyvi žaidimo zona.
 const playground = document.querySelector("#playground");
 
-// Selects the movable object.
+// Randamas valdomas objektas.
 const movableObject = document.querySelector("#movable-object");
 
-// Selects the obstacle element.
+// Randama kliūtis.
 const obstacle = document.querySelector("#obstacle");
 
-// Selects the position output element.
+// Randamas elementas, kuriame rodoma dabartinė pozicija.
 const positionOutput = document.querySelector("#position-output");
 
-// Selects the message element.
+// Randamas būsenos pranešimo elementas.
 const message = document.querySelector("#message");
 
-// Defines how many pixels the object moves with each arrow key press.
+// Nustatoma, kiek pikselių objektas pajuda vienu rodyklės klavišo paspaudimu.
 const movementStep = 18;
 
-// Stores the horizontal position of the object.
+// Saugoma horizontali objekto pozicija.
 let objectX = 40;
 
-// Stores the vertical position of the object.
+// Saugoma vertikali objekto pozicija.
 let objectY = 90;
 
-// Stores the movement animation timer.
+// Saugomas judėjimo animacijos laikmačio identifikatorius.
 let movementTimer;
 
-// Returns the maximum allowed object position inside the playground.
+// Apskaičiuojamos didžiausios leistinos objekto koordinatės žaidimo zonoje.
 function getPlaygroundLimits() {
   return {
     maxX: playground.clientWidth - movableObject.offsetWidth,
@@ -33,7 +33,7 @@ function getPlaygroundLimits() {
   };
 }
 
-// Creates a rectangle object for the movable object.
+// Sukuriamos valdomo objekto stačiakampio ribos susidūrimams tikrinti.
 function getObjectRectangle(x, y) {
   return {
     left: x,
@@ -43,7 +43,7 @@ function getObjectRectangle(x, y) {
   };
 }
 
-// Creates a rectangle object for the obstacle.
+// Sukuriamos kliūties stačiakampio ribos.
 function getObstacleRectangle() {
   return {
     left: obstacle.offsetLeft,
@@ -53,7 +53,7 @@ function getObstacleRectangle() {
   };
 }
 
-// Checks whether two rectangles overlap.
+// Patikrinama, ar du stačiakampiai persidengia.
 function rectanglesOverlap(firstRectangle, secondRectangle) {
   return (
     firstRectangle.left < secondRectangle.right &&
@@ -63,7 +63,7 @@ function rectanglesOverlap(firstRectangle, secondRectangle) {
   );
 }
 
-// Checks whether the movable object collides with the obstacle.
+// Patikrinama, ar naujoje pozicijoje objektas susidurtų su kliūtimi.
 function isCollidingWithObstacle(x, y) {
   const objectRectangle = getObjectRectangle(x, y);
 
@@ -72,7 +72,7 @@ function isCollidingWithObstacle(x, y) {
   return rectanglesOverlap(objectRectangle, obstacleRectangle);
 }
 
-// Keeps the movable object inside the playground boundaries.
+// Koordinatės apribojamos taip, kad objektas neišeitų už žaidimo zonos.
 function keepInsidePlayground(x, y) {
   const limits = getPlaygroundLimits();
 
@@ -82,7 +82,7 @@ function keepInsidePlayground(x, y) {
   };
 }
 
-// Adds a short visual effect when the object moves.
+// Trumpam įjungiama judėjimo animacija.
 function showMovementFeedback() {
   movableObject.classList.add("is-moving");
 
@@ -93,10 +93,11 @@ function showMovementFeedback() {
   }, 180);
 }
 
-// Shows a visual message when the object hits the obstacle.
+// Parodomas vaizdinis efektas ir pranešimas susidūrus su kliūtimi.
 function showCollisionFeedback() {
   obstacle.classList.remove("is-hit");
 
+  // Priverstinis išdėstymo perskaičiavimas leidžia animaciją paleisti iš naujo.
   void obstacle.offsetWidth;
 
   obstacle.classList.add("is-hit");
@@ -108,7 +109,7 @@ function showCollisionFeedback() {
   }, 320);
 }
 
-// Updates the position of the movable object.
+// Patikrinama ir atnaujinama valdomo objekto pozicija.
 function updatePosition(x, y) {
   const safePosition = keepInsidePlayground(x, y);
 
@@ -134,7 +135,7 @@ function updatePosition(x, y) {
   showMovementFeedback();
 }
 
-// Moves the object when an arrow key is pressed.
+// Objektas perkeliamas paspaudus vieną iš rodyklių klavišų.
 function handleKeyboardMovement(event) {
   const movementKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
 
@@ -167,7 +168,7 @@ function handleKeyboardMovement(event) {
   updatePosition(nextX, nextY);
 }
 
-// Moves the object to the clicked position inside the playground.
+// Objektas centruojamas ties paspausta žaidimo zonos vieta.
 function handlePlaygroundClick(event) {
   const playgroundRectangle = playground.getBoundingClientRect();
 
@@ -182,22 +183,20 @@ function handlePlaygroundClick(event) {
   playground.focus();
 }
 
-// Restores a valid object position after resizing the browser window.
+// Pakeitus lango dydį objekto pozicija vėl apribojama matoma zona.
 function restoreVisiblePosition() {
   updatePosition(objectX, objectY);
 }
 
-// Listens for keyboard events.
+// Užregistruojami klaviatūros, pelės ir lango dydžio keitimo įvykiai.
 document.addEventListener("keydown", handleKeyboardMovement);
 
-// Listens for mouse clicks inside the playground.
 playground.addEventListener("click", handlePlaygroundClick);
 
-// Listens for browser window resizing.
 window.addEventListener("resize", restoreVisiblePosition);
 
-// Sets the initial position of the object.
+// Nustatoma pradinė objekto pozicija.
 updatePosition(objectX, objectY);
 
-// Gives keyboard focus to the playground.
+// Fokusas suteikiamas žaidimo zonai, kad iš karto veiktų valdymas klaviatūra.
 playground.focus();
