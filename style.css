@@ -1,4 +1,4 @@
-/* Bendrieji nustatymai ir numatytųjų naršyklės tarpų panaikinimas. */
+/* Global settings and browser spacing reset. */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 :root {
-  /* Spalvų kintamieji leidžia lengvai keisti viso puslapio temą. */
+  /* Color variables make the page theme easy to update. */
   --background: #070b14;
   --panel: rgba(15, 23, 42, 0.82);
   --panel-border: rgba(148, 163, 184, 0.18);
@@ -46,7 +46,7 @@ body {
 }
 
 body::before {
-  /* Fiksuotas subtilus tinklelis virš pagrindinio fono. */
+  /* Fixed subtle grid layered over the main background. */
   position: fixed;
   inset: 0;
   z-index: -1;
@@ -58,7 +58,7 @@ body::before {
 }
 
 .animated-background {
-  /* Dekoratyvinis sluoksnis neužstoja paspaudimų interaktyvioje zonoje. */
+  /* The decorative layer does not block clicks in the interactive area. */
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -152,7 +152,7 @@ body::before {
 }
 
 .app {
-  /* Turinys rodomas virš dekoratyvinio fono ir centruojamas puslapyje. */
+  /* Places the content above the decorative background and centers it. */
   position: relative;
   z-index: 1;
   width: min(1180px, calc(100% - 32px));
@@ -267,7 +267,7 @@ h1 {
 }
 
 .playground {
-  /* Santykinė pozicija naudojama objektui ir kliūčiai išdėstyti. */
+  /* Relative positioning anchors the movable object and obstacle. */
   position: relative;
   height: min(68vh, 620px);
   min-height: 440px;
@@ -329,7 +329,7 @@ h1 {
 }
 
 .movable-object {
-  /* left ir top reikšmes judėjimo metu keičia JavaScript. */
+  /* JavaScript updates the left and top values during movement. */
   position: absolute;
   z-index: 4;
   width: 76px;
@@ -380,7 +380,7 @@ h1 {
 }
 
 .obstacle {
-  /* Absoliučiai išdėstyta zona, su kuria tikrinami susidūrimai. */
+  /* Absolutely positioned area used for collision detection. */
   position: absolute;
   top: 40%;
   left: 48%;
@@ -430,7 +430,7 @@ h1 {
 }
 
 @keyframes pulse-ring {
-  /* Besiplečiantis žiedas sukuria švytinčio objekto pulsavimo efektą. */
+  /* An expanding ring creates the glowing object's pulse effect. */
   0% {
     opacity: 0.7;
     transform: scale(0.9);
@@ -466,7 +466,7 @@ h1 {
 }
 
 @keyframes obstacle-hit {
-  /* Trumpas kliūties sujudėjimas parodo, kad įvyko susidūrimas. */
+  /* A short shake indicates a collision with the obstacle. */
   0%,
   100% {
     transform: translateX(0);
@@ -489,7 +489,7 @@ h1 {
 }
 
 @media (max-width: 760px) {
-  /* Išdėstymas pritaikomas telefonams ir siauresniems ekranams. */
+  /* Adapts the layout for phones and narrower screens. */
   .app {
     width: calc(100% - 20px);
     padding: 20px 0;
@@ -529,7 +529,7 @@ h1 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* Gerbiama naudotojo operacinėje sistemoje pasirinkta mažesnio judesio nuostata. */
+  /* Respects the user's reduced-motion operating system preference. */
   *,
   *::before,
   *::after {

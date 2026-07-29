@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <!-- Dekoratyvinis animuotas fonas; aria-hidden paslepia jį nuo ekrano skaitytuvų. -->
+    <!-- Decorative animated background hidden from screen readers. -->
     <div class="animated-background" aria-hidden="true">
       <img
         class="floating-logo floating-logo--lovlaus floating-logo--1"
@@ -57,9 +57,9 @@
       />
     </div>
 
-    <!-- Pagrindinis programėlės turinys. -->
+    <!-- Main application content. -->
     <main class="app">
-      <!-- Naudojimo instrukcija, valdymo būdai ir dabartinė objekto pozicija. -->
+      <!-- Instructions, controls, and the object's current position. -->
       <section class="intro-panel">
         <p class="eyebrow">JavaScript Advanced · Oppgave 1</p>
 
@@ -102,7 +102,7 @@
         </div>
       </section>
 
-      <!-- Interaktyvi zona, kurioje galima judinti šviečiantį objektą. -->
+      <!-- Interactive area in which the glowing object can move. -->
       <section
         id="playground"
         class="playground"
@@ -116,7 +116,7 @@
           Interactive area
         </div>
 
-        <!-- Kliūtis, pro kurią judantis objektas negali prasiskverbti. -->
+        <!-- Obstacle that the movable object cannot pass through. -->
         <div id="obstacle" class="obstacle">Obstacle</div>
 
         <div
@@ -127,7 +127,7 @@
           <span class="orb-core"></span>
         </div>
 
-        <!-- aria-live praneša būsenos pasikeitimus pagalbinėms technologijoms. -->
+        <!-- aria-live announces status changes to assistive technologies. -->
         <p id="message" class="message" aria-live="polite">
           Click inside the area or use the arrow keys.
         </p>
