@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="A JavaScript project with a movable object controlled by arrow keys and mouse clicks."
+    />
+
+    <title>Movable Object</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="animated-background" aria-hidden="true">
+      <img
+        class="floating-logo floating-logo--lovlaus floating-logo--1"
+        src="./Logo/LovLaus logo.png"
+        alt=""
+      />
+
+      <img
+        class="floating-logo floating-logo--lovlaus floating-logo--2"
+        src="./Logo/LovLaus logo.png"
+        alt=""
+      />
+
+      <img
+        class="floating-logo floating-logo--lovlaus floating-logo--3"
+        src="./Logo/LovLaus logo.png"
+        alt=""
+      />
+
+      <img
+        class="floating-logo floating-logo--vscode floating-logo--4"
+        src="./Logo/LovLaus logo.png"
+        alt=""
+      />
+
+      <img
+        class="floating-logo floating-logo--vscode floating-logo--5"
+        src="./Logo/LovLaus logo.png"
+        alt=""
+      />
+
+      <img
+        class="floating-logo floating-logo--vscode floating-logo--6"
+        src="./Logo/LovLaus logo.png"
+        alt=""
+      />
+    </div>
+
+    <main class="app">
+      <section class="intro-panel">
+        <p class="eyebrow">JavaScript Advanced · Oppgave 1</p>
+
+        <div class="intro-content">
+          <div>
+            <h1>Move the glowing orb</h1>
+
+            <p class="description">
+              Use the arrow keys or click inside the playground to move the
+              object. The object stays inside the visible area and cannot pass
+              through the obstacle.
+            </p>
+          </div>
+
+          <div class="controls">
+            <div class="control-card">
+              <span class="control-icon">⌨</span>
+
+              <div>
+                <strong>Arrow keys</strong>
+                <span>Move in four directions</span>
+              </div>
+            </div>
+
+            <div class="control-card">
+              <span class="control-icon">↖</span>
+
+              <div>
+                <strong>Mouse click</strong>
+                <span>Move directly to a position</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="status-row">
+          <span class="status-label">Current position</span>
+
+          <output id="position-output"> X: 0 · Y: 0 </output>
+        </div>
+      </section>
+
+      <section
+        id="playground"
+        class="playground"
+        aria-label="Interactive movement area"
+        tabindex="0"
+      >
+        <div class="playground-grid"></div>
+
+        <div class="playground-label">
+          <span class="live-dot"></span>
+          Interactive area
+        </div>
+
+        <div id="obstacle" class="obstacle">Obstacle</div>
+
+        <div
+          id="movable-object"
+          class="movable-object"
+          aria-label="Movable glowing orb"
+        >
+          <span class="orb-core"></span>
+        </div>
+
+        <p id="message" class="message" aria-live="polite">
+          Click inside the area or use the arrow keys.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
