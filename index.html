@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="style.css" />
 
-    <script src="script.js" defer></script>
+    <script src="./javascript.js" defer></script>
   </head>
 
   <body>
@@ -69,8 +69,8 @@
 
             <p class="description">
               Use the arrow keys or click inside the playground to move the
-              object. The object stays inside the visible area and cannot pass
-              through the obstacle.
+              object. Guide it from START to FINISH without touching the maze
+              walls.
             </p>
           </div>
 
@@ -116,8 +116,12 @@
           Interactive area
         </div>
 
-        <!-- Obstacle that the movable object cannot pass through. -->
-        <div id="obstacle" class="obstacle">Obstacle</div>
+        <div id="start-area" class="goal-area start-area">START</div>
+
+        <div id="finish-area" class="goal-area finish-area">FINISH</div>
+
+        <!-- Decorative maze walls are hidden from assistive technologies. -->
+        <div id="maze-walls" class="maze-walls" aria-hidden="true"></div>
 
         <div
           id="movable-object"

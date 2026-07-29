@@ -267,10 +267,10 @@ h1 {
 }
 
 .playground {
-  /* Relative positioning anchors the movable object and obstacle. */
+  /* Relative positioning anchors the movable object and maze elements. */
   position: relative;
-  height: min(68vh, 620px);
-  min-height: 440px;
+  height: 4960px;
+  min-height: 4960px;
   overflow: hidden;
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 28px;
@@ -379,29 +379,14 @@ h1 {
   filter: blur(2px);
 }
 
-.obstacle {
-  /* Absolutely positioned area used for collision detection. */
+.goal-area {
   position: absolute;
-  top: 40%;
-  left: 48%;
   z-index: 2;
   display: grid;
-  width: 170px;
-  height: 96px;
+  width: 112px;
+  height: 112px;
   place-items: center;
-  border: 1px solid rgba(251, 113, 133, 0.48);
-  border-radius: 20px;
-  background:
-    repeating-linear-gradient(
-      -45deg,
-      rgba(251, 113, 133, 0.11) 0 12px,
-      rgba(251, 113, 133, 0.04) 12px 24px
-    ),
-    rgba(127, 29, 29, 0.14);
-  color: #fecdd3;
-  box-shadow:
-    inset 0 0 28px rgba(251, 113, 133, 0.08),
-    0 18px 45px rgba(0, 0, 0, 0.25);
+  border-radius: 22px;
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -409,8 +394,51 @@ h1 {
   pointer-events: none;
 }
 
-.obstacle.is-hit {
-  animation: obstacle-hit 300ms ease;
+.start-area {
+  border: 1px solid rgba(52, 211, 153, 0.42);
+  background: rgba(6, 78, 59, 0.16);
+  color: #a7f3d0;
+  box-shadow: inset 0 0 28px rgba(52, 211, 153, 0.08);
+}
+
+.finish-area {
+  border: 1px solid rgba(167, 139, 250, 0.46);
+  background: rgba(76, 29, 149, 0.16);
+  color: #ddd6fe;
+  box-shadow: inset 0 0 28px rgba(167, 139, 250, 0.1);
+}
+
+.finish-area.is-complete {
+  animation: finish-complete 700ms ease;
+}
+
+.maze-walls {
+  --wall-thickness: 12px;
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.maze-wall {
+  position: absolute;
+  height: var(--wall-thickness);
+  border: 1px solid rgba(251, 113, 133, 0.42);
+  border-radius: 999px;
+  background: rgba(127, 29, 29, 0.42);
+  box-shadow:
+    inset 0 0 12px rgba(251, 113, 133, 0.12),
+    0 0 16px rgba(251, 113, 133, 0.08);
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.maze-wall.is-hit {
+  background: rgba(190, 24, 93, 0.72);
+  box-shadow:
+    inset 0 0 14px rgba(255, 255, 255, 0.18),
+    0 0 22px rgba(251, 113, 133, 0.34);
 }
 
 .message {
@@ -465,19 +493,17 @@ h1 {
   }
 }
 
-@keyframes obstacle-hit {
-  /* A short shake indicates a collision with the obstacle. */
+@keyframes finish-complete {
   0%,
   100% {
-    transform: translateX(0);
+    transform: scale(1);
   }
 
-  35% {
-    transform: translateX(-7px);
-  }
-
-  70% {
-    transform: translateX(7px);
+  50% {
+    transform: scale(1.06);
+    box-shadow:
+      inset 0 0 32px rgba(167, 139, 250, 0.22),
+      0 0 28px rgba(124, 58, 237, 0.28);
   }
 }
 
@@ -510,14 +536,14 @@ h1 {
   }
 
   .playground {
-    height: 64vh;
-    min-height: 500px;
+    height: 4960px;
+    min-height: 4960px;
     border-radius: 22px;
   }
 
-  .obstacle {
-    width: 132px;
-    height: 82px;
+  .goal-area {
+    width: 104px;
+    height: 104px;
   }
 
   .floating-logo--1,
