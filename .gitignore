@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs and test output
+*.log
+coverage/
+
+# Generated build output and caches
+dist/
+build/
+.cache/
+
+# Temporary and backup files
+temp/
+*.tmp
+*.bak

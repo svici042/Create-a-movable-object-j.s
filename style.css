@@ -347,8 +347,6 @@ h1 {
     0 0 44px rgba(124, 58, 237, 0.72),
     0 18px 42px rgba(0, 0, 0, 0.42);
   transition:
-    left 110ms ease-out,
-    top 110ms ease-out,
     transform 180ms ease,
     box-shadow 180ms ease;
   pointer-events: none;
